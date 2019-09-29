@@ -13,7 +13,11 @@
       <div class="col-sm-3">
         <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="profile image">
       </div>
-     
+      <div class="col-sm-5">
+        <ul class="list-group">
+          <li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
