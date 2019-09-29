@@ -2,6 +2,22 @@
 <section>
   <h2>Git Search </h2>
 <p>Checkout users their repos , amount of followers and many more by just entering a username</p>
+<div *ngIf="profile">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{profile.name}} {{profile.login}}
+      ,works at{{profile.company}}
+      {{profile.location}}
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-3">
+        <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="profile image">
+      </div>
+     
+    </div>
+  </div>
+</div>
 </section>
+
 <section></section>
 <div class="layer"></div>
