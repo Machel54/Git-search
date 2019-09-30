@@ -1,11 +1,11 @@
-<section></section>
-<section>
+<div class="wrapper text center">
   <h2>Git Search </h2>
   <p>Checkout users their repos , amount of followers and many more by just entering a username</p>
   <form action="" class="search-form">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search git users with username" [(ngModel)]="username"
-        name="username" (keyup)="findProfile()">
+        name="username">
+        <button class="btn btn-success" onclick="findProfile()">Search</button>
     </div>
   </form>
   <div *ngIf="profile">
@@ -54,6 +54,5 @@
         </div>
       </div>
     </div>
+  </div>
   
-
-  <div class="layer"></div>
