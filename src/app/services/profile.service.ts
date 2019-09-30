@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class ProfileService {
@@ -11,7 +12,14 @@ private clientsecret = '0e1590845b9e5015cf4841f7b0b24a55b0ce4b50';
    console.log("service is working");
    this.username = 'Machel54';
    }
-   getProfileInfo(){
+   getProfileInfo():Observable <any>{
      return this.http.get("https://api.github.com/users/" + this.username + "?client_id=" + this.clientid + "&client_secret" + this.clientsecret)
    }
+   getProfileRepos() :Observable <any>{
+    return this.http.get("https://api.github.com/users/" + this.username + "/?reposclient_id=" + this.clientid + "&client_secret" + this.clientsecret)
+  }
+  
+  updateProfile(username:string){
+    this.username = username;
+  }
 }

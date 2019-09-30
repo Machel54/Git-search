@@ -1,39 +1,59 @@
 <section></section>
 <section>
   <h2>Git Search </h2>
-<p>Checkout users their repos , amount of followers and many more by just entering a username</p>
-<div *ngIf="profile">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      {{profile.name}} {{profile.login}}
-      ,works at{{profile.company}}
-      {{profile.location}}
+  <p>Checkout users their repos , amount of followers and many more by just entering a username</p>
+  <form action="" class="search-form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search git users with username" [(ngModel)]="username"
+        name="username" (keyup)="findProfile()">
     </div>
-    <div class="panel-body">
-      <div class="row">
-      <div class="col-sm-3">
-        <img src="{{profile.avatar_url}}" class="rounded-circle img-responsive" alt="profile pic">
+  </form>
+  <div *ngIf="profile">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{profile.name}} {{profiles.login}}
+        , Works at {{profiles.company}}
+        {{profiles.location}}
       </div>
-      <div class="col-sm-5">
-        <ul class="list-group">
-          <li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li>
-          <li class="list-group-item" *ngIf="profile.blog">{{profile.blog}}</li>
-          <li class="list-group-item" *ngIf="profile.email">{{profile.email}}</li>
-        </ul>
-      </div>
-      <div class="col-sm-4">
-      <div>
-        <p>
-          <span class="badge badge-warning">{{profile.followers}} Followers</span>
-          <span class="badge badge-danger">{{profile.following}} Following</span>
-          <span class="badge badge-success">{{profile.public_gists}} Public gists</span>
-          <span class="badge badge-info">{{profile.public_repos}} Public repos </span>
-        </p>
-        <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-danger bt-sm">Veiw on github</a></p>
+      <div class="panel-body ">
+        <div class="row">
+          <div class="col-sm-3">
+            <img style="width:200px"  src="{{profiles.avatar_url}}" class="rounded-circle img-responsive" alt="profile pic">
+          </div>
+          <div class="col-sm-5">
+            <ul class="list-group" ngFor="let prof of profile">
+              <li class="list-group-item" >{{profile.bio}}</li>
+              <li class="list-group-item">{{profile.blog}}</li>
+              <li class="list-group-item">{{profile.email}}</li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <div *ngFor="let profile of profiles">
+              <p>
+                <span class="badge badge-warning">{{profile.followers}} Followers</span>
+                <span class="badge badge-danger">{{profile.following}} Following</span>
+                <span class="badge badge-success">{{profile.public_gists}} Public gists</span>
+                <span class="badge badge-info">{{profile.public_repos}} Public repos </span>
+              </p>
+            </div>
+              <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-danger bt-sm">Veiw on github</a></p>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="card">Repos</h3>
+                  <div class="panel-body" *ngFor="let repo of repos">
+                    <p>
+                      {{repo.name}} <a href="{{repo.html_url}}"
+                        class="btn btn-sn btn-warning pull-right">View this project on github</a>
+                    </p>
+                    <p>{{repo.description}}</p>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
         </div>
+      </div>
     </div>
-  </div>
-</div>
+  
 
-
-<div class="layer"></div>
+  <div class="layer"></div>
