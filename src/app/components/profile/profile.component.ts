@@ -8,28 +8,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profile:any;
-  repos:any;
-  username:string;
-  profiles = []
+  repos:[]
+  username: string;
+  profile = []
   constructor(private profileService: ProfileService) {
 
   }
 
 
-  findProfile(){
-    this.profileService.getProfileInfo().subscribe(profile => {
-      this.profiles = profile;
-      console.log(this.profiles);
+  findProfile(username: any){
+    this.profileService.getProfileInfo(username).subscribe(profile => {
+      this.profile = profile
+      console.log(username)
+      // console.log(this.profiles);
     });
     
-    this.profileService.getProfileRepos().subscribe(repos =>{
+    this.profileService.getProfileRepos(username).subscribe(repos =>{
       console.log(repos);
       this.repos = repos;
+      console.log(this.repos)
     })
   }
 
   ngOnInit() {
+    this.findProfile('Machel54')
   }
 
 }
