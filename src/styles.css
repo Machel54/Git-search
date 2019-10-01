@@ -5,9 +5,6 @@ body{
   padding: 0;
   animation: bgcolor infinite 20s;
   font-family: 'Josefin Slab', serif;
-  color: #fff; 
-  
-  
   text-align: center;
 } 
 @keyframes bgcolor{

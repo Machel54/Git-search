@@ -1,5 +1,5 @@
 <div class="wrapper text center">
-  <h2>Git Search </h2>
+  <h2 class="mb-5 text-center G">Git Search</h2>
   <p>Checkout users their repos , amount of followers and many more by just entering a username</p>
   <form action="" class="search-form" method="POST">
     <div class="form-group">
@@ -8,8 +8,8 @@
       
     </div>
   </form>
-  <div *ngIf="profile">
-    <div class="panel panel-default">
+   <div *ngIf="profile">
+    <div class="wrapper text-center">
       <div class="panel-heading">
         {{profile.name}} {{profile.login}}
         , Works at {{profile.company}}
@@ -36,23 +36,39 @@
                 <span class="badge badge-info">{{profile.public_repos}} Public repos </span>
               </p>
             </div>
-              <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-danger bt-sm">Veiw on github</a></p>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="card">Repos</h3>
-                  <div class="panel-body" *ngFor="let repo of repos">
-                    <p>
-                      {{repo.name}} <a href="{{repo.html_url}}"
-                        class="btn btn-sn btn-warning pull-right">View this project on github</a>
-                    </p>
-                    <p>{{repo.description}}</p>
+            <br>
+              <p><a href="{{repo.html_url}}" target="_blank" class="btn btn-danger bt-sm">Veiw on github</a></p>
+             
+              <div class="container card">
+                  <div class="card" *ngFor="let repo of repos">
+                    <div class="card P">REPO</div>
+                      <div class="card-header text-center"><h5 id="rname">{{repo.name}}</h5></div>
+                      <div class="card-body">
+                        <p id="rdesc">{{repo.description}}</p>
+                        <p id="rlang">{{repo.language}}</p>
+                      </div>
+                      <div class="card-footer flex-footer">
+                        <p id="rwatchers" class="text-center">Watchers <span class="data">{{repo.watchers}}</span></p>
+                        <p id="rforks" class="text-center">Forks <span class="data">{{repo.forks}}</span></p>
+                        <p id="rbranch" class="text-center">Branch <span class="data">{{repo.default_branch}} </span></p>
+                      </div>
                   </div>
                 </div>
-              </div>
+  <!-- <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="card">Repos</h3>
+      <div class="panel-body" *ngFor="let repo of repos">
+        <p>
+          {{repo.name}} <a href="{{repo.html_url}}"
+            class="btn btn-sn btn-warning pull-right">View this project on github</a>
+        </p>
+        <p>{{repo.description}}</p>
+      </div> -->
+              
             
           </div>
         </div>
-      </div>
+      </div> 
     </div>
-  </div>
+
   
